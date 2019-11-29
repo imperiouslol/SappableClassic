@@ -1,5 +1,5 @@
 ## Interface: 11302
 ## Title: SappableClassic
-## Notes: Display icon to indicate whether or not target/focus units are "Sappable".
+## Notes: Display icon to indicate whether or not target unit is "Sappable".
 Sappable.lua
 Sappable.xml
