@@ -41,9 +41,11 @@ local function getSappableCreatureTypes()
 	end;
 end;
 
+sappableCreatureTypes = getSappableCreatureTypes();
+
 local function creatureIsSappable(unit)
 	creatureType = UnitCreatureType(unit)
-	for index, value in ipairs(getSappableCreatureTypes()) do
+	for index, value in ipairs(sappableCreatureTypes) do
 		if (value == creatureType) then
                 	return true;
 		end;
