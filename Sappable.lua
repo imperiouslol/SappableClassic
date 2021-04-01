@@ -16,36 +16,21 @@ focusIndicator.t:SetAllPoints();
 focusIndicator.t:SetTexture("Interface\\Icons\\ABILITY_SAP");
 focusIndicator:Hide();
 
-local function getSappableCreatureTypes()
-	local LOCALE = GetLocale()
-	if LOCALE == "deDE" then
-		return {"Humanoid"};
-	elseif LOCALE == "esES" then
-		return {"Humanoide"};
-	elseif LOCALE == "esMX" then
-		return {"Humanoide"};
-	elseif LOCALE == "frFR" then
-		return {"d’humanoïde"};
-	elseif LOCALE == "itIT" then
-		return {"Umanoidi"};
-	elseif LOCALE == "koKR" then
-		return {"인간형"};
-	elseif LOCALE == "ptBR" then
-		return {"Humanoide"};
-	elseif LOCALE == "zhCN" then
-		return {"人型"};
-	elseif LOCALE == "zhTW" then
-		return {"人形"};
-	else
-		return {"Humanoid"};
-	end;
-end;
-
-sappableCreatureTypes = getSappableCreatureTypes();
+tCreatureTypesByLocale = {};
+tCreatureTypesByLocale["enUS"]={"Humanoid"};
+tCreatureTypesByLocale["deDE"]={"Humanoid"};
+tCreatureTypesByLocale["esES"]={"Humanoide"};
+tCreatureTypesByLocale["esMX"]={"Humanoide"};
+tCreatureTypesByLocale["frFR"]={"d’humanoïde"};
+tCreatureTypesByLocale["itIT"]={"Umanoidi"};
+tCreatureTypesByLocale["koKR"]={"인간형"};
+tCreatureTypesByLocale["ptBR"]={"Humanoide"};
+tCreatureTypesByLocale["zhCN"]={"人型"};
+tCreatureTypesByLocale["zhTW"]={"人形"};
 
 local function creatureIsSappable(unit)
 	creatureType = UnitCreatureType(unit)
-	for index, value in ipairs(sappableCreatureTypes) do
+	for index, value in ipairs(tCreatureTypesByLocale[GetLocale()]) do
 		if (value == creatureType) then
                 	return true;
 		end;
