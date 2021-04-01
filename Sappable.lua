@@ -1,55 +1,3 @@
---local function defaultFunc(L, key)
---	return key;
---end
-
---MyLocalizationTable = setmetatable({}, {__index=defaultFunc});
-
---local L = MyLocalizationTable;
-
---sappableCreatureTypes = {L["Humanoid"]};
-
-local LOCALE = GetLocale()
-
-if LOCALE == "enUS" then
-sappableCreatureTypes = {"Humanoid"};
-end
-
-if LOCALE == "deDE" then
-	sappableCreatureTypes = {"Humanoid"};
-end
-
-if LOCALE == "esES" then
-	sappableCreatureTypes = {"Humanoide"};
-end
-
-if LOCALE == "esMX" then
-	sappableCreatureTypes = {"Humanoide"};
-end
-
-if LOCALE == "frFR" then
-	sappableCreatureTypes = {"d’humanoïde"};
-end
-
-if LOCALE == "itIT" then
-	sappableCreatureTypes = {"Umanoidi"};
-end
-
-if LOCALE == "koKR" then
-	sappableCreatureTypes = {"인간형"};
-end
-
-if LOCALE == "ptBR" then
-	sappableCreatureTypes = {"Humanoide"};
-end
-
-if LOCALE == "zhCN" then
-	sappableCreatureTypes = {"人型"};
-end
-
-if LOCALE == "zhTW" then
-	sappableCreatureTypes = {"人形"};
-end
-
 targetIndicator=CreateFrame("Frame");
 targetIndicator:SetParent(TargetFrame);
 targetIndicator:SetPoint("Right", TargetFrame, -15);
@@ -68,9 +16,34 @@ focusIndicator.t:SetAllPoints();
 focusIndicator.t:SetTexture("Interface\\Icons\\ABILITY_SAP");
 focusIndicator:Hide();
 
+local function getSappableCreatureTypes()
+	local LOCALE = GetLocale()
+	if LOCALE == "deDE" then
+		return {"Humanoid"};
+	elseif LOCALE == "esES" then
+		return {"Humanoide"};
+	elseif LOCALE == "esMX" then
+		return {"Humanoide"};
+	elseif LOCALE == "frFR" then
+		return {"d’humanoïde"};
+	elseif LOCALE == "itIT" then
+		return {"Umanoidi"};
+	elseif LOCALE == "koKR" then
+		return {"인간형"};
+	elseif LOCALE == "ptBR" then
+		return {"Humanoide"};
+	elseif LOCALE == "zhCN" then
+		return {"人型"};
+	elseif LOCALE == "zhTW" then
+		return {"人形"};
+	else
+		return {"Humanoid"};
+	end;
+end;
+
 local function creatureIsSappable(unit)
 	creatureType = UnitCreatureType(unit)
-	for index, value in ipairs(sappableCreatureTypes) do
+	for index, value in ipairs(getSappableCreatureTypes()) do
 		if (value == creatureType) then
                 	return true;
 		end;
