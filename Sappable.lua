@@ -1,13 +1,3 @@
-local function defaultFunc(L, key)
-	return key;
-end
-
-MyLocalizationTable = setmetatable({}, {__index=defaultFunc});
-
-local L = MyLocalizationTable;
-
-sappableCreatureTypes = {L["Humanoid"]};
-
 targetIndicator=CreateFrame("Frame");
 targetIndicator:SetParent(TargetFrame);
 targetIndicator:SetPoint("Right", TargetFrame, -15);
@@ -26,9 +16,21 @@ focusIndicator.t:SetAllPoints();
 focusIndicator.t:SetTexture("Interface\\Icons\\ABILITY_SAP");
 focusIndicator:Hide();
 
+tCreatureTypesByLocale = {};
+tCreatureTypesByLocale["enUS"]={"Humanoid"};
+tCreatureTypesByLocale["deDE"]={"Humanoid"};
+tCreatureTypesByLocale["esES"]={"Humanoide"};
+tCreatureTypesByLocale["esMX"]={"Humanoide"};
+tCreatureTypesByLocale["frFR"]={"d’humanoïde"};
+tCreatureTypesByLocale["itIT"]={"Umanoidi"};
+tCreatureTypesByLocale["koKR"]={"인간형"};
+tCreatureTypesByLocale["ptBR"]={"Humanoide"};
+tCreatureTypesByLocale["zhCN"]={"人型"};
+tCreatureTypesByLocale["zhTW"]={"人形"};
+
 local function creatureIsSappable(unit)
 	creatureType = UnitCreatureType(unit)
-	for index, value in ipairs(sappableCreatureTypes) do
+	for index, value in ipairs(tCreatureTypesByLocale[GetLocale()]) do
 		if (value == creatureType) then
                 	return true;
 		end;
