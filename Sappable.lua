@@ -1,12 +1,54 @@
-local function defaultFunc(L, key)
-	return key;
+--local function defaultFunc(L, key)
+--	return key;
+--end
+
+--MyLocalizationTable = setmetatable({}, {__index=defaultFunc});
+
+--local L = MyLocalizationTable;
+
+--sappableCreatureTypes = {L["Humanoid"]};
+
+local LOCALE = GetLocale()
+
+if LOCALE == "enUS" then
+sappableCreatureTypes = {"Humanoid"};
 end
 
-MyLocalizationTable = setmetatable({}, {__index=defaultFunc});
+if LOCALE == "deDE" then
+	sappableCreatureTypes = {"Humanoid"};
+end
 
-local L = MyLocalizationTable;
+if LOCALE == "esES" then
+	sappableCreatureTypes = {"Humanoide"};
+end
 
-sappableCreatureTypes = {L["Humanoid"]};
+if LOCALE == "esMX" then
+	sappableCreatureTypes = {"Humanoide"};
+end
+
+if LOCALE == "frFR" then
+	sappableCreatureTypes = {"d’humanoïde"};
+end
+
+if LOCALE == "itIT" then
+	sappableCreatureTypes = {"Umanoidi"};
+end
+
+if LOCALE == "koKR" then
+	sappableCreatureTypes = {"인간형"};
+end
+
+if LOCALE == "ptBR" then
+	sappableCreatureTypes = {"Humanoide"};
+end
+
+if LOCALE == "zhCN" then
+	sappableCreatureTypes = {"人型"};
+end
+
+if LOCALE == "zhTW" then
+	sappableCreatureTypes = {"人形"};
+end
 
 targetIndicator=CreateFrame("Frame");
 targetIndicator:SetParent(TargetFrame);
