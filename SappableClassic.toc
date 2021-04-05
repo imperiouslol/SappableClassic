@@ -1,5 +1,6 @@
 ## Interface: 11302
 ## Title: SappableClassic
 ## Notes: Display icon to indicate whether or not target unit is "Sappable".
+## SavedVariablesPerCharacter: indicatorScale
 Sappable.lua
 Sappable.xml
