@@ -1,4 +1,4 @@
-## Interface: 11302
+## Interface: 20501
 ## Title: SappableClassic
 ## Notes: Display icon to indicate whether or not target unit is "Sappable".
 Sappable.lua
